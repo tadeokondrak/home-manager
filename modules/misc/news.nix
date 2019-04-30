@@ -1076,6 +1076,13 @@ in
           support to your VSCode.
         '';
       }
+
+      {
+        time = "2019-04-30T01:28:03+00:00";
+        message = ''
+          A new module is available: 'programs.mpv'.
+        '';
+      }
     ];
   };
 }
