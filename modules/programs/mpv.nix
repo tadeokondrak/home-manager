@@ -20,8 +20,6 @@ let
       bool = if option then "yes" else "no";
 
       string = option;
-
-      null = "";
     }.${typeOf option};
 
   renderOptions = options:
@@ -58,8 +56,8 @@ in {
 
       config = mkOption {
         description = ''
-          Configuration written to <filename>~/.config/mpv/mpv.conf</filename>.
-          See
+          Configuration written to
+          <filename>~/.config/mpv/mpv.conf</filename>. See
           <citerefentry>
             <refentrytitle>mpv</refentrytitle>
             <manvolnum>1</manvolnum>
@@ -80,8 +78,9 @@ in {
 
       profiles = mkOption {
         description = ''
-          Sub-configuration options for specific profiles written to <filename>~/.config/mpv/mpv.conf</filename>.
-          See <option>programs.mpv.config</option> for more information.
+          Sub-configuration options for specific profiles written to
+          <filename>~/.config/mpv/mpv.conf</filename>. See
+          <option>programs.mpv.config</option> for more information.
         '';
         type = mpvProfiles;
         default = {};
@@ -100,8 +99,8 @@ in {
 
       bindings = mkOption {
         description = ''
-          Input configuration written to <filename>~/.config/mpv/input.conf</filename>.
-          See
+          Input configuration written to
+          <filename>~/.config/mpv/input.conf</filename>. See
           <citerefentry>
             <refentrytitle>mpv</refentrytitle>
             <manvolnum>1</manvolnum>
@@ -127,8 +126,8 @@ in {
     }
     (mkIf (cfg.config != {} || cfg.profiles != {}) {
       xdg.configFile."mpv/mpv.conf".text = ''
-        ${optionalString (cfg.config != null) (renderOptions cfg.config)}
-        ${optionalString (cfg.profiles != null) (renderProfiles cfg.profiles)}
+        ${optionalString (cfg.config != {}) (renderOptions cfg.config)}
+        ${optionalString (cfg.profiles != {}) (renderProfiles cfg.profiles)}
       '';
     })
     (mkIf (cfg.bindings != {}) {
