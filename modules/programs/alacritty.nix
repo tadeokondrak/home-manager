@@ -44,10 +44,10 @@ in
   config = mkMerge [
     (mkIf cfg.enable {
       home.packages = [ pkgs.alacritty ];
-    })
-    (mkIf (cfg.settings != {}) {
-      xdg.configFile."alacritty/alacritty.yml".text =
-        replaceStrings ["\\\\"] ["\\"] (builtins.toJSON cfg.settings);
+
+      xdg.configFile."alacritty/alacritty.yml" = mkIf (cfg.settings != {}) {
+        text = replaceStrings ["\\\\"] ["\\"] (builtins.toJSON cfg.settings);
+      };
     })
   ];
 }
