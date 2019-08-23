@@ -30,10 +30,12 @@ import nmt {
   }
   // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux (
     {
+      getmail = ./modules/programs/getmail.nix;
       i3-keybindings = ./modules/services/window-managers/i3-keybindings.nix;
     }
     // import ./modules/misc/pam
     // import ./modules/misc/xsession
+    // import ./modules/programs/firefox
     // import ./modules/systemd
   )
   // import ./modules/home-environment
