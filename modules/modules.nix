@@ -47,6 +47,7 @@ let
     (loadModule ./programs/broot.nix { })
     (loadModule ./programs/browserpass.nix { })
     (loadModule ./programs/chromium.nix { condition = hostPlatform.isLinux; })
+    (loadModule ./programs/clang-format.nix { })
     (loadModule ./programs/command-not-found/command-not-found.nix { })
     (loadModule ./programs/direnv.nix { })
     (loadModule ./programs/eclipse.nix { })
